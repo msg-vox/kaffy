@@ -25,7 +25,7 @@ defmodule Kaffy.ResourceSchema do
     Keyword.drop(fields(schema), fields_to_be_removed(schema))
   end
 
-  def form_fields(schema) do
+  def form_fields(_conn, schema) do
     to_be_removed =
       fields_to_be_removed(schema) ++
         primary_keys(schema) ++
