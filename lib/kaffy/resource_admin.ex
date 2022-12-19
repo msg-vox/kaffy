@@ -113,7 +113,8 @@ defmodule Kaffy.ResourceAdmin do
     Utils.get_assigned_value_or_default(
       resource,
       :form_fields,
-      ResourceSchema.form_fields(conn, schema)
+      ResourceSchema.form_fields(conn, schema),
+      [conn]
     )
     |> set_default_field_options(schema)
   end
