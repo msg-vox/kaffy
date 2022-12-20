@@ -388,7 +388,7 @@ The maps have the following keys:
 
 ### Index pages
 
-The `index/1` function takes a schema and must return a keyword list of fields and their options.
+The `index/2` function takes a schema and conn and must return a keyword list of fields and their options.
 
 If the options are `nil`, Kaffy will use default values for that field.
 
@@ -401,7 +401,7 @@ defmodule MyApp.Blog.PostAdmin do
     if (p.popular), do: "✅", else: "❌"
   end
 
-  def index(_) do
+  def index(_, _) do
     [
       title: nil,
       views: %{name: "Hits"},

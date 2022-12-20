@@ -68,9 +68,15 @@ defmodule Kaffy.ResourceAdmin do
   end
   ```
   """
-  def index(resource) do
+  def index(conn, resource) do
     schema = resource[:schema]
-    Utils.get_assigned_value_or_default(resource, :index, ResourceSchema.index_fields(schema))
+
+    Utils.get_assigned_value_or_default(
+      resource,
+      :index,
+      ResourceSchema.index_fields(conn, schema),
+      [conn]
+    )
   end
 
   @doc """
